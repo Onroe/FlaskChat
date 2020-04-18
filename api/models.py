@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, DateTime
 from database import Base
+from datetime import datetime
 
 class User(Base):
         __tablename__ = 'users'
@@ -9,6 +10,10 @@ class User(Base):
         def __init__(self, username=None, password=None):
             self.username = username
             self.password = password
+
+        @classmethod
+        def find_by_username(cls, username):
+           return cls.query.filter_by(username = username).first()    
 
         
 class Channel(Base):
@@ -25,3 +30,4 @@ class Message(Base):
         from_user = Column(Integer, ForeignKey('users.id'))
         to_user = Column(Integer, ForeignKey('users.id'))
         channel_id = Column(Integer, ForeignKey('channels.id'))
+        timestamp = Column(DateTime, default=datetime.utcnow)
