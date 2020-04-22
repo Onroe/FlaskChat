@@ -29,7 +29,7 @@ $ pip install -r requirements.txt
 - Create database tables from database.py
 
 ```
-$ python
+$python
 $from database import init_db
 $init_db()
 ```
@@ -39,7 +39,7 @@ $ flask run
 ```
 
 ####Run the frontend
--Open a new nodejs terminal window, then navigate to the frontend folder folder:
+-Open a new nodejs terminal window, then navigate to the frontend folder:
 
 Install dependencies:
 ```
