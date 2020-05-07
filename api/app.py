@@ -82,7 +82,8 @@ def message(json):
 # Close connection when not in use
 @app.teardown_appcontext
 def shutdown_session(exception=None):
-    db.session.remove()    
+    #db.session.remove() 
+    db.session.close_all()  
  
 
 

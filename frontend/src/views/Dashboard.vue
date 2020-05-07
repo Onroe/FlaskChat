@@ -60,7 +60,11 @@
 
           <div class="card-body">
               <div class="messagelist" v-for="(msg, index) in messages" :key="index">
-                  <p><span class="mt-user"> {{ user }}</span>&#32;         <span>{{ msg.message }}</span>              <span>{{ msg.timestamp }}</span></p>
+                <div class="chat-message col-md-5"
+          v-bind:class="[(msg.from_user == activeUser) ? 'to-message' : 'from-message offset-md-7']">
+          {{msg.message}} <span class="timestamp">{{msg.timestamp}}</span>
+                </div>
+                <!--  <p><span class="mt-user"> {{ user }}</span>&#32;         <span>{{ msg.message }}</span>   <span>{{ msg.timestamp }}</span></p> !-->
               </div>
             <hr />
 
@@ -269,6 +273,23 @@ export default {
 .mt-user {
   padding-left: 0.25m !important;
   padding-right: 0.25m !important;
+}
+.from-message {
+  background: #17a2b8;
+  color: white;
+  border-radius: 3px;
+  padding: 8px 2px;
+  margin-bottom: 4px;
+}
+.to-message {
+  background: rgb(201, 209, 209);
+  color: rgb(41, 53, 52);
+  border-radius: 3px;
+  padding: 8px 2px;
+  margin-bottom: 4px;
+}
+.timestamp{
+font-size: 8px;
 }
 
 </style>
