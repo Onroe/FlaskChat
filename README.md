@@ -58,7 +58,7 @@ $ npm run serve
 
 ![Screenshot](signup.png)
 
-![Screenshot](chat.png)
+![Screenshot](chat.PNG)
 
 
 
