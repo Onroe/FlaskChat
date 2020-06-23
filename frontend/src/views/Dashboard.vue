@@ -62,7 +62,7 @@
               <div class="messagelist" v-for="(msg, index) in messages" :key="index">
                 <div class="chat-message col-md-5"
           v-bind:class="[(msg.from_user == activeUser) ? 'to-message' : 'from-message offset-md-7']">
-          {{msg.message}} <span class="timestamp">{{msg.timestamp}}</span>
+          {{msg.message}} <span class="timestamp">{{msg.timestamp}}</span>  {{ getSentiment(msg.sentiment.polarity) }}
                 </div>
                 <!--  <p><span class="mt-user"> {{ user }}</span>&#32;         <span>{{ msg.message }}</span>   <span>{{ msg.timestamp }}</span></p> !-->
               </div>
@@ -117,6 +117,9 @@ export default {
       active_chat_id: null,
       active_chat_index: null,
       current_chat_channel: null,
+      happy: String.fromCodePoint(0x1f600),
+      neutral: String.fromCodePoint(0x1f610),
+      sad: String.fromCodePoint(0x1f61f),
     };
   },
   created() {
@@ -230,6 +233,14 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    getSentiment(sentiment) {
+      if (sentiment > 0.5) {
+        return this.happy;
+      } if (sentiment < 0.0) {
+        return this.sad;
+      }
+      return this.neutral;
     },
   },
 

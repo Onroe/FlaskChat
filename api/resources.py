@@ -6,6 +6,7 @@ from database import db_session
 from models import User, Channel, Message
 import datetime
 import app
+from textblob import TextBlob
 from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required, get_jwt_identity, get_raw_jwt)
 
 
@@ -156,6 +157,7 @@ class SendMessage(Resource):
         "message": message,
         "channel": channel,
         "timestamp": timestamp,
+        "sentiment": getSentiment(message),
                  }
         print('RECEIVED:' + str(message))  
         socketio.emit('RESPONSE', message, callback=messageReceived) 
@@ -182,6 +184,11 @@ class Messages(Resource):
             "channel_id": message.channel_id,
             "from_user": message.from_user,
             "timestamp":message.timestamp,
+            "sentiment": getSentiment(message.message),
         }
         for message in messages
     ]))
+
+def getSentiment(message):
+        text = TextBlob(message)
+        return {'polarity': text.polarity}

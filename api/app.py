@@ -52,7 +52,7 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
 @socketio.on('event')
 def message(json):
     #for key, value in json.items():
-    #  print('Received:' + key, value)  
+    #print('Received:' + key, value)  
     
     from_user = json.get('from_user')
     to_user = json.get('to_user')
@@ -97,5 +97,5 @@ api.add_resource(resources.SendMessage,'/api/sendmessage')
 
     # run Flask app
 if __name__ == "__main__":
-    app.run()
+    socketio.run(app)
 
