@@ -62,10 +62,9 @@
               <div class="messagelist" v-for="(msg, index) in messages" :key="index">
                 <div class="chat-message col-md-5"
           v-bind:class="[(msg.from_user == activeUser) ? 'to-message' : 'from-message offset-md-7']">
-          {{msg.message}} <span class="timestamp">{{msg.timestamp}}</span>  {{ getSentiment(msg.sentiment.polarity) }}
+          {{msg.message}} <span class="timestamp">{{msg.timestamp}}</span>
                 </div>
-                <!--  <p><span class="mt-user"> {{ user }}</span>&#32;         <span>{{ msg.message }}</span>   <span>{{ msg.timestamp }}</span></p> !-->
-              </div>
+                 </div>
             <hr />
 
             <form @submit.prevent="send_message" method="post">
@@ -90,9 +89,6 @@
 </template>
 
 <script>
-// import VueSocketIO from 'vue-socket.io';
-// import SocketIO from 'socket.io-client';
-// const socket = SocketIO('http://socketserver.com:1923');
 import SocketIO from 'socket.io-client';
 import axios from 'axios';
 import router from '../router';
@@ -206,7 +202,7 @@ export default {
     // Initiate chat session
     request_chat(id) {
       this.active_chat_id = id;
-      // Get index of the current chatting user...
+      // Get index of the current chatting user..
       this.active_chat_index = this.users.findIndex(
         (user) => user.id === this.active_chat_id,
       );

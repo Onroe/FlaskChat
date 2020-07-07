@@ -97,5 +97,6 @@ api.add_resource(resources.SendMessage,'/api/sendmessage')
 
     # run Flask app
 if __name__ == "__main__":
-    socketio.run(app)
+    app.run()
+    #socketio.run(app)  FOR REMOVE SOCKETIO WARNING
 
