@@ -93,7 +93,6 @@ import SocketIO from 'socket.io-client';
 import axios from 'axios';
 import router from '../router';
 
-
 export default {
   name: 'Dashboard',
   props: {

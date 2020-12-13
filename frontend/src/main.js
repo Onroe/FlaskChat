@@ -17,7 +17,6 @@ import store from './store';
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 
-
 new Vue({
   router,
   store,

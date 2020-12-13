@@ -51,7 +51,6 @@ import { required, sameAs, minLength } from 'vuelidate/lib/validators';
 import axios from 'axios';
 import router from '../router';
 
-
 export default {
   name: 'Register',
   data() {
